@@ -1,0 +1,6 @@
+Create a tcl file "Simulation.tcl"
+Run th file with the command "ns Simulation.tcl"
+
+Or To get the Xgraph use the below command
+
+xgraph -x "Time (s)" -y "Hand-off count" -tk -P handoff_count.dat
