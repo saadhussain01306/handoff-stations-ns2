@@ -93,3 +93,7 @@ puts "Total number of hand-offs: $handoff_count"
 
 # Plot hand-off count over time using xgraph
 exec xgraph -x "Time (s)" -y "Hand-off count" -tk -P handoff_count.dat &
+
+
+# output: (would get differrnt Graphs as random values are being used 
+# Total number of hand-offs: 257 (this would also be different for differrnt running times)
