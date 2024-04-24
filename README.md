@@ -52,3 +52,8 @@ In summary, the xgraph plot provides a visual representation of the hand-off cou
 9. **Plotting Hand-off Count Over Time**: Finally, the `xgraph` command is used to plot the hand-off count over time with the generated data file "handoff_count.dat". The x-axis represents time in seconds, and the y-axis represents the hand-off count.
 
 In summary, this code simulates the movement of users in a wireless communication network and tracks the occurrence of hand-offs between base stations as users move around. It then outputs the total number of hand-offs and plots the hand-off count over time.
+
+![Screenshot from 2024-04-24 02-34-34](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/40403f26-8a61-4eaa-9b3b-3d2d6028b56c)
+
+
+
