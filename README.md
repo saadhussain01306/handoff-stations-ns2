@@ -56,4 +56,45 @@ In summary, this code simulates the movement of users in a wireless communicatio
 ![Screenshot from 2024-04-24 02-34-34](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/40403f26-8a61-4eaa-9b3b-3d2d6028b56c)
 
 
+# Dataset Creation Explanation
+
+This section provides an explanation of how the dataset "dataset.txt" was created using a Tcl script.
+
+## Script Explanation
+
+The dataset was generated using a Tcl script named "generate_dataset.tcl". Here's a brief overview of how the script works:
+
+1. **Simulation Parameters**: 
+    - The script sets various simulation parameters such as the number of base stations, number of users, simulation time, and movement interval.
+
+2. **Base Station and User Initialization**: 
+    - Base station locations and user initial positions are randomly generated within a 100x100 grid.
+
+3. **Simulation Execution**:
+    - The script simulates user movements and hand-off management over the specified simulation time.
+    - Users move randomly within the grid, and their positions are updated accordingly.
+    - Hand-off management is performed based on a certain scheme (OPI-RLI-HO).
+
+4. **Data Logging**:
+    - During each iteration of the simulation loop, the time and the current hand-off count are logged to the "dataset.txt" file.
+
+5. **CSV Conversion**:
+    - After the simulation is complete, the script converts the "dataset.txt" file into a CSV format named "dataset.csv" for easier data manipulation and analysis.
+
+6. **Visualization**:
+    - Additionally, the script utilizes xgraph to plot the hand-off count over time using the original "dataset.txt" file.
+
+## Files generation
+
+- **generate_dataset.tcl**: The Tcl script used to generate the dataset.
+- **dataset.txt**: The original dataset file containing time and hand-off count information.
+- **dataset.csv**: A CSV version of the dataset for easier analysis.
+
+
+## Usage
+To run the Tcl script and generate the dataset, follow these steps:
+
+1. Make sure you have Tcl,nam,ns installed on your system.
+2. Execute the script using the Tcl interpreter: `ns generate_dataset.tcl`.
+3. After execution, you'll find the generated dataset files ("dataset.txt" and "dataset.csv") in the same directory.
 
