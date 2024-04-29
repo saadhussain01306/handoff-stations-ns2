@@ -16,11 +16,20 @@ proc max {a b} {
     }
 }
 
+# Function to calculate distance between two points
+proc distance {point1 point2} {
+    set x1 [lindex $point1 0]
+    set y1 [lindex $point1 1]
+    set x2 [lindex $point2 0]
+    set y2 [lindex $point2 1]
+    return [expr {hypot($x2 - $x1, $y2 - $y1)}]
+}
+
 # Set simulation parameters
 set num_bs 5           ;# Number of base stations
 set num_users 20       ;# Number of users
 set sim_time 1000      ;# Simulation time in seconds
-set movement_interval 4;# Interval between user movements in seconds
+set movement_interval 2;# Interval between user movements in seconds
 
 # Initialize hand-off count
 set handoff_count 0
@@ -48,7 +57,7 @@ puts $output_file "Movement Interval (s): $movement_interval"
 puts $output_file "\nData:"
 
 # Write data headers
-puts $output_file "Time Hand-off_Count"
+puts $output_file "Time Handoff_Count User_ID Current_Base_Station Nearest_Base_Station Distance_to_Nearest_Base_Station"
 
 # Simulate user movement and hand-off management
 for {set t 0} {$t < $sim_time} {incr t $movement_interval} {
@@ -75,7 +84,7 @@ for {set t 0} {$t < $sim_time} {incr t $movement_interval} {
         # Find the nearest base station
         foreach bs_id [array names bs] {
             set bs_pos $bs($bs_id)
-            set distance [expr {hypot([lindex $user_pos 0] - [lindex $bs_pos 0], [lindex $user_pos 1] - [lindex $bs_pos 1])}]
+            set distance [distance $user_pos $bs_pos]
             if {$distance < $min_distance} {
                 set min_distance $distance
                 set nearest_bs $bs_id
@@ -89,10 +98,10 @@ for {set t 0} {$t < $sim_time} {incr t $movement_interval} {
             set user_cur_bs($user_id) $nearest_bs
             # Perform hand-off actions here (e.g., update user's connection)
         }
+        
+        # Write hand-off information to output file
+        puts $output_file "$t $handoff_count $user_id $user_cur_bs($user_id) $nearest_bs $min_distance"
     }
-    
-    # Write hand-off count to output file
-    puts $output_file "$t $handoff_count"
 }
 
 # Close the output file
@@ -103,15 +112,12 @@ set input_file [open "dataset.txt" r]
 set csv_file [open "dataset.csv" w]
 
 # Write headers for the CSV file
-puts $csv_file "Time,Hand-off_Count"
+puts $csv_file "Time,Handoff_Count,User_ID,Current_Base_Station,Nearest_Base_Station,Distance_to_Nearest_Base_Station"
 
 # Skip header lines in the dataset file
-gets $input_file
-gets $input_file
-gets $input_file
-gets $input_file
-gets $input_file
-gets $input_file
+for {set i 1} {$i <= 6} {incr i} {
+    gets $input_file
+}
 
 # Write data to the CSV file
 while {[gets $input_file line] != -1} {
@@ -131,6 +137,4 @@ close $csv_file
 puts "Total number of hand-offs: $handoff_count"
 
 # Plot hand-off count over time using xgraph
-exec xgraph -x "Time (s)" -y "Hand-off count" -tk -P dataset.txt &
-
-
+exec xgraph -x "Time (s)" -y "Handoff count" -tk -P dataset.txt &
