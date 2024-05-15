@@ -12,7 +12,7 @@ This code simulates a hand-off management system in a wireless communication net
 
 2. **Simulation Parameters**: Several simulation parameters are set, including the number of base stations (`num_bs`), the number of users (`num_users`), simulation time in seconds (`sim_time`), and the interval between user movements in seconds (`movement_interval`).
 
-3. **Hand-off Count Initialization**: `handoff_count` variable is initialized to keep track of the number of hand-offs that occur during the simulation.
+3. **Hand-off Count Initialization**: `handOPIoff_count` variable is initialized to keep track of the number of hand-offs that occur during the simulation.
 
 4. **Base Station and User Initialization**:
    - Base stations (`bs`) are randomly positioned within the coverage area (0,100) using a loop.
@@ -21,7 +21,7 @@ This code simulates a hand-off management system in a wireless communication net
 5. **Output File Creation**: A file named "handoff_count.dat" is created to store the hand-off count over time.
 
 6. **User Movement and Hand-off Management Simulation**:
-   - A loop simulates user movement and hand-off management over time (`sim_time`).
+   - A loop simulates user movement and hanOPId-off management over time (`sim_time`).
    - Inside the loop, user movement is simulated by updating their positions randomly within a small range using a nested loop.
    - Hand-off management based on the OPI-RLI-HO (Optimization Parameter Interpolation-Received Level Indicator-Handover) scheme is performed for each user:
      - The nearest base station to each user is found by calculating the Euclidean distance between the user's position and each base station's position.
@@ -97,4 +97,64 @@ To run the Tcl script and generate the dataset, follow these steps:
 1. Make sure you have Tcl,nam,ns installed on your system.
 2. Execute the script using the Tcl interpreter: `ns generate_dataset.tcl`.
 3. After execution, you'll find the generated dataset files ("dataset.txt" and "dataset.csv") in the same directory.
+
+
+# Handover Management Models
+
+This repository contains datasets and scripts related to the comparison of three handover management models:
+
+1. Traditional Handover
+2. Group Cell Handover (GCHO)
+3. OPI-RLI-HO (Optimization Parameter Interpolation-Received Level Indicator-Handover)
+
+## Introduction
+
+In cellular networks, handover management is a crucial process that ensures seamless connectivity for mobile users as they move between different cells. Efficient handover algorithms are essential to maintain high-quality service and optimize network resources. This repository explores and compares three handover management models to evaluate their effectiveness in different network scenarios.
+
+## Models Overview
+
+### Traditional Handover
+
+Traditional Handover is a conventional approach where handover decisions are based on predefined thresholds for parameters such as Received Signal Strength (RSS), Signal-to-Noise Ratio (SNR), and Mobility Speed. These static thresholds are set by network operators and may not adapt well to dynamic changes in network conditions, leading to suboptimal handover performance.
+
+### Group Cell Handover (GCHO)
+
+Group Cell Handover (GCHO) introduces a novel concept where neighboring cells are grouped together, and handover decisions are made based on the collective performance of these groups. By considering clusters of cells rather than individual cell performance, GCHO aims to reduce signaling overhead and improve network efficiency, especially in dense urban environments with overlapping cells.
+
+### OPI-RLI-HO
+
+OPI-RLI-HO (Optimization Parameter Interpolation-Received Level Indicator-Handover) is an advanced handover management method that leverages Optimization Parameter Interpolation (OPI) and Received Level Indicator (RLI) to dynamically adjust handover decisions based on real-time network conditions. By interpolating optimization parameters and considering received signal levels, OPI-RLI-HO aims to optimize handover decisions for improved network performance and user experience.
+
+## Comparison
+
+To compare the efficiency of these handover management models, datasets have been generated for each method and analyzed. The comparison includes evaluating various parameters such as RSS, SNR, Cell Load, Coverage Area, Mobility Speed, Handover Threshold (for Traditional Handover), Group Size, Interference Level, Group Load, Group Coverage Area (for Group Cell Handover), Optimization Parameter, Received Level Indicator, and Handover Decision (for OPI-RLI-HO). Statistical analysis and visualization techniques are employed to assess the performance of each OPImodel under different network conditions.
+
+## Comparison-parameters
+
+To compare the efficiency of these handover management models, datasets have been generated for each method and analyzed. The efficiency of each model is evaluated based on various parameters, including:
+
+- RSS
+- SNR
+- Cell Load
+- Coverage Area
+- Mobility Speed
+- Handover Threshold (for Traditional Handover)
+- Group Size
+- Interference Level
+- Group Load
+- Group Coverage Area (for Group Cell Handover)
+- Optimization Parameter
+- Received Level Indicator
+- Handover Decision (for OPI-RLI-HO)
+
+
+## Results
+
+Based on the analysis of the generated datasets, OPI-RLI-HO demonstrates superior performance compared to Traditional Handover and Group Cell Handover. By dynamically adjusting handover decisions based on optimization parameters and received signal levels, OPI-RLI-HO achieves better network efficiency, reduced call drops, and improved user experience. The results highlight the importance of adaptive handover algorithms in modern cellular networks to meet the increasing demand for seamless connectivity and efficient resource utilization.
+
+## Usage
+
+- The Tcl scripts provided in this repository generate datasets for each handover management model.
+- Python scripts are available for plotting and analyzing the generated datasets.
+- Refer to the individual scripts for detailed instructions on usage.
 
