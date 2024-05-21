@@ -117,13 +117,60 @@ In cellular networks, handover management is a crucial process that ensures seam
 
 Traditional Handover is a conventional approach where handover decisions are based on predefined thresholds for parameters such as Received Signal Strength (RSS), Signal-to-Noise Ratio (SNR), and Mobility Speed. These static thresholds are set by network operators and may not adapt well to dynamic changes in network conditions, leading to suboptimal handover performance.
 
+## parameters used in the `generate_traditional_handover_dataset` procedure:
+
+1. **num_samples**: This parameter determines the number of samples or data points to be generated for the dataset. It specifies how many sets of data points will be created.
+
+2. **rss (Received Signal Strength)**: This parameter represents the strength of the signal received by a mobile device or receiver. It's generated randomly within the range of -120 dBm to 0 dBm. A higher RSS typically indicates better signal quality.
+
+3. **snr (Signal-to-Noise Ratio)**: This parameter represents the ratio of the signal power to the noise power in a communication channel. It's generated randomly between 0 dB and 30 dB. A higher SNR indicates better signal quality and less interference.
+
+4. **cell_load**: This parameter represents the load or utilization of a cellular network cell. It's generated randomly between 0 and 100, indicating a percentage of the cell's capacity being used.
+
+5. **coverage_area**: This parameter represents the coverage area of a cellular network cell. It's generated randomly between 1 and 10, possibly indicating the radius or extent of coverage in kilometers or any other unit of measurement.
+
+6. **mobility_speed**: This parameter represents the speed of mobility of the mobile device or user within the network. It's generated randomly between 0 and 120, possibly indicating kilometers per hour or any other unit of measurement.
+
+7. **handover_threshold**: This parameter represents the threshold for triggering a handover in a traditional handover scheme. It's generated randomly within the range of -90 dBm to -110 dBm. When the received signal strength falls below this threshold, a handover decision may be initiated to maintain connectivity.
+
+These parameters together form a dataset reflecting various conditions and characteristics of a cellular network, including signal strength, noise, network load, coverage area, mobility speed, and handover thresholds. The dataset is then saved to a CSV file named "data_trad.csv" for further analysis or use.
+
+
 ### Group Cell Handover (GCHO)
 
 Group Cell Handover (GCHO) introduces a novel concept where neighboring cells are grouped together, and handover decisions are made based on the collective performance of these groups. By considering clusters of cells rather than individual cell performance, GCHO aims to reduce signaling overhead and improve network efficiency, especially in dense urban environments with overlapping cells.
 
+## parameters used in the `generate_gcho_dataset` procedure:
+
+1. **num_samples**: This parameter determines the number of samples or data points to be generated for the dataset. It specifies how many sets of data points will be created.
+
+2. **group_size**: This parameter represents the size of a group of cells involved in a Group Cell Handover (GCHO) scheme. It's generated as an integer value between 2 and 5. In a GCHO scheme, neighboring cells are grouped together to coordinate handover decisions collectively.
+
+3. **interference_level**: This parameter represents the level of interference experienced in the network environment. It's generated randomly between 0 and 20, indicating the severity of interference from external sources or neighboring cells.
+
+4. **group_load**: This parameter represents the load or utilization of the group of cells participating in the GCHO scheme. It's generated randomly between 0 and 500, possibly indicating the aggregate traffic or resource usage within the group.
+
+5. **group_coverage_area**: This parameter represents the coverage area of the group of cells participating in the GCHO scheme. It's generated randomly between 2 and 20, possibly indicating the combined coverage radius or extent of the grouped cells.
+
+These parameters together form a dataset reflecting various characteristics and conditions relevant to a Group Cell Handover (GCHO) scheme, including group size, interference level, group load, and group coverage area. The dataset is then saved to a CSV file named "data_group.csv" for further analysis or use.
+
+
 ### OPI-RLI-HO
 
 OPI-RLI-HO (Optimization Parameter Interpolation-Received Level Indicator-Handover) is an advanced handover management method that leverages Optimization Parameter Interpolation (OPI) and Received Level Indicator (RLI) to dynamically adjust handover decisions based on real-time network conditions. By interpolating optimization parameters and considering received signal levels, OPI-RLI-HO aims to optimize handover decisions for improved network performance and user experience.
+
+# parameters used in the `generate_opi_rli_ho_dataset` procedure:
+
+1. **num_samples**: This parameter determines the number of samples or data points to be generated for the dataset. It specifies how many sets of data points will be created.
+
+2. **optimization_parameter**: This parameter represents a value indicating the optimization parameter for a system or process. In the context of this dataset generation, it's randomly generated between 0 and 1. It could signify any variable that needs optimization within a system, such as throughput, efficiency, or resource allocation.
+
+3. **received_level_indicator**: This parameter simulates a received signal strength or any other indicator relevant to the system under consideration. It's generated randomly between 0 and 100. In real-world scenarios, it could represent a metric like signal strength, signal-to-noise ratio, or any other performance indicator.
+
+4. **handover_decision**: This parameter represents a binary decision, either 0 or 1, indicating whether a handover should be performed. It's determined based on the value of the received level indicator. If the received level indicator is greater than 50, a handover decision of 1 (indicating "yes") is made; otherwise, it's 0 (indicating "no"). In telecommunications or network systems, handover decisions are crucial for maintaining connectivity and quality of service.
+
+These parameters together form a dataset reflecting various conditions or states of a system, along with decisions made based on those conditions. The dataset is then saved to a CSV file named "data_opi.csv" for further analysis or use.
+
 
 ## Comparison
 
@@ -147,6 +194,37 @@ To compare the efficiency of these handover management models, datasets have bee
 - Received Level Indicator
 - Handover Decision (for OPI-RLI-HO)
 
+## parameters used for comparing between the three models in the `generate_traditional_handover_dataset`, `generate_gcho_dataset`, and `generate_opi_rli_ho_dataset` procedures:
+
+1. **Method**: This parameter indicates the method or model for which the dataset is generated. It distinguishes between Traditional Handover, Group Cell Handover (GCHO), and OPI-RLI-HO (Optimization Parameter-Received Level Indicator-Handover) methods. It allows for easy identification of the dataset's origin.
+
+2. **Received Signal Strength (RSS)**: This parameter represents the strength of the signal received by a mobile device or receiver. It's applicable to Traditional Handover and GCHO methods and is generated within a range of -120 dBm to 0 dBm.
+
+3. **Signal-to-Noise Ratio (SNR)**: This parameter represents the ratio of the signal power to the noise power in a communication channel. It's applicable to Traditional Handover and is generated between 0 dB and 30 dB.
+
+4. **Cell Load**: This parameter represents the load or utilization of a cellular network cell. It's applicable to Traditional Handover and is generated between 0 and 100, indicating a percentage of the cell's capacity being used.
+
+5. **Coverage Area**: This parameter represents the coverage area of a cellular network cell. It's applicable to Traditional Handover and GCHO methods and is generated between 1 and 10, possibly indicating the radius or extent of coverage in kilometers or any other unit of measurement.
+
+6. **Mobility Speed**: This parameter represents the speed of mobility of the mobile device or user within the network. It's applicable to Traditional Handover and is generated between 0 and 120, possibly indicating kilometers per hour or any other unit of measurement.
+
+7. **Handover Threshold**: This parameter represents the threshold for triggering a handover in a Traditional Handover method. It's applicable to Traditional Handover and is generated within the range of -90 dBm to -110 dBm. When the received signal strength falls below this threshold, a handover decision may be initiated to maintain connectivity.
+
+8. **Group Size**: This parameter represents the size of a group of cells involved in a Group Cell Handover (GCHO) scheme. It's applicable to GCHO and is generated as an integer value between 2 and 5.
+
+9. **Interference Level**: This parameter represents the level of interference experienced in the network environment. It's applicable to GCHO and is generated randomly between 0 and 20, indicating the severity of interference from external sources or neighboring cells.
+
+10. **Group Load**: This parameter represents the load or utilization of the group of cells participating in the GCHO scheme. It's applicable to GCHO and is generated randomly between 0 and 500, possibly indicating the aggregate traffic or resource usage within the group.
+
+11. **Group Coverage Area**: This parameter represents the coverage area of the group of cells participating in the GCHO scheme. It's applicable to GCHO and is generated randomly between 2 and 20, possibly indicating the combined coverage radius or extent of the grouped cells.
+
+12. **Optimization Parameter**: This parameter represents a value indicating the optimization parameter for a system or process. It's applicable to OPI-RLI-HO and is generated between 0 and 1.
+
+13. **Received Level Indicator**: This parameter represents an indicator of received signal strength or performance. It's applicable to OPI-RLI-HO and is generated between 0 and 100.
+
+14. **Handover Decision**: This parameter represents a binary decision, either 0 or 1, indicating whether a handover should be performed. It's applicable to OPI-RLI-HO and is determined based on the value of the received level indicator. If the received level indicator is greater than 50, a handover decision of 1 (indicating "yes") is made; otherwise, it's 0 (indicating "no").
+
+These parameters together provide a comprehensive set of metrics for comparing the performance and characteristics of the three models: Traditional Handover, Group Cell Handover (GCHO), and OPI-RLI-HO. The dataset containing these parameters is saved to a CSV file named "data_compare.csv" for further analysis or use.
 
 ## Results
 
@@ -157,4 +235,3 @@ Based on the analysis of the generated datasets, OPI-RLI-HO demonstrates superio
 - The Tcl scripts provided in this repository generate datasets for each handover management model.
 - Python scripts are available for plotting and analyzing the generated datasets.
 - Refer to the individual scripts for detailed instructions on usage.
-
