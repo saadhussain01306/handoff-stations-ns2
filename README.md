@@ -135,6 +135,8 @@ Traditional Handover is a conventional approach where handover decisions are bas
 
 These parameters together form a dataset reflecting various conditions and characteristics of a cellular network, including signal strength, noise, network load, coverage area, mobility speed, and handover thresholds. The dataset is then saved to a CSV file named "data_trad.csv" for further analysis or use.
 
+![image](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/a33733a3-73ca-4acc-ad0e-9883af51da32)
+
 
 ### Group Cell Handover (GCHO)
 
@@ -154,6 +156,8 @@ Group Cell Handover (GCHO) introduces a novel concept where neighboring cells ar
 
 These parameters together form a dataset reflecting various characteristics and conditions relevant to a Group Cell Handover (GCHO) scheme, including group size, interference level, group load, and group coverage area. The dataset is then saved to a CSV file named "data_group.csv" for further analysis or use.
 
+![image](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/828b0d7c-9ff4-4094-bc1c-693426451475)
+
 
 ### OPI-RLI-HO
 
@@ -171,6 +175,7 @@ OPI-RLI-HO (Optimization Parameter Interpolation-Received Level Indicator-Handov
 
 These parameters together form a dataset reflecting various conditions or states of a system, along with decisions made based on those conditions. The dataset is then saved to a CSV file named "data_opi.csv" for further analysis or use.
 
+![image](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/9a72cbd3-6c91-4235-bd6f-8bbe215a6590)
 
 ## Comparison
 
@@ -244,30 +249,47 @@ This README provides an overview of the key parameters considered in each handov
 - **GCHO:** In Group Cell Handover, RSS from multiple neighboring cells might be considered collectively. Instead of relying solely on the RSS of the serving cell, a decision is made based on the combined RSS of a group of cells. This approach can lead to more informed handover decisions, especially in scenarios where multiple cells provide similar signal strengths.
 - **OPI-RLI-HO:** While RSS is still a crucial parameter in OPI-RLI-HO, its importance might be dynamically adjusted based on the optimization parameter. This method might weigh RSS differently depending on factors such as network congestion, interference, or user mobility. By adapting the importance of RSS dynamically, OPI-RLI-HO can optimize handover decisions more effectively.
 
+![image](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/f06ca05d-56aa-4dd9-88b3-c53115d98052)
+
+
 ### 2. Signal-to-Noise Ratio (SNR):
 - **Traditional Handover (TH):** SNR measures the ratio of the desired signal power to the background noise power. In traditional handover methods, SNR might be used as a supplementary metric alongside RSS. It becomes particularly important in environments with high noise levels, where maintaining a good SNR is essential for communication quality.
 - **GCHO:** Similar to traditional methods, GCHO might consider SNR to assess the quality of signals from multiple neighboring cells. It helps in determining the best cell or group of cells to hand over to, especially in scenarios where interference and noise are significant factors.
 - **OPI-RLI-HO:** SNR could be integrated into the optimization process of OPI-RLI-HO. Depending on the optimization parameter and network conditions, OPI-RLI-HO might prioritize handovers based on SNR when it's critical for maintaining communication quality.
+
+![image](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/bd45ee47-80f3-40b5-9a84-bd692f343be1)
+
 
 ### 3. Cell Load:
 - **Traditional Handover (TH):** Cell load refers to the amount of traffic or activity handled by a cell at any given time. In traditional handover methods, overloaded cells might trigger handovers to less congested cells to balance the load and prevent performance degradation.
 - **GCHO:** Group Cell Handover methods might take into account the load of multiple cells within a group. Instead of focusing solely on the load of the serving cell, GCHO considers the collective load of all cells in the group before making handover decisions.
 - **OPI-RLI-HO:** Cell load is one of the parameters that OPI-RLI-HO might dynamically adjust based on the optimization parameter. By considering the current load distribution across cells and optimizing handover thresholds accordingly, OPI-RLI-HO aims to improve overall network performance and resource utilization.
 
+![image](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/38e3064a-0adb-4ac5-bbf3-86ff38388ab6)
+
+
 ### 4. Coverage Area:
 - **Traditional Handover (TH):** Coverage area indirectly influences handover decisions in traditional methods. While not directly considered, maintaining seamless coverage across cells is crucial for ensuring uninterrupted communication for mobile users.
 - **GCHO:** Group Cell Handover methods might explicitly consider coverage area, especially in scenarios where it's necessary to ensure consistent coverage across multiple cells within a group. Handover decisions aim to optimize coverage overlap and minimize coverage gaps.
 - **OPI-RLI-HO:** OPI-RLI-HO could incorporate coverage area into its optimization process to ensure efficient coverage management. By dynamically adjusting handover parameters based on coverage area considerations, OPI-RLI-HO aims to enhance overall network coverage and performance.
+
+  ![image](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/e9bd9aa8-ef4e-49ce-9d44-f6591a4a83a6)
+
 
 ### 5. Mobility Speed:
 - **Traditional Handover (TH):** Mobility speed influences handover decisions in traditional methods, especially for fast-moving users. Higher mobility speeds might trigger more frequent handovers to maintain continuous connectivity.
 - **GCHO:** Group Cell Handover methods might consider mobility speed when coordinating handovers between cells within a group. Faster-moving users might require more proactive handover strategies to ensure seamless connectivity.
 - **OPI-RLI-HO:** OPI-RLI-HO dynamically adjusts handover parameters based on mobility speed to optimize handover decisions for users moving at different speeds. By considering mobility characteristics, OPI-RLI-HO aims to provide smoother handover experiences and minimize disruptions for mobile users.
 
+![image](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/5b01c405-944f-4609-ba69-42a6d8b6d0e4)
+
+
 ### 6. Handover Threshold:
 - **Traditional Handover (TH):** Traditional handover methods typically rely on fixed handover thresholds based on predefined criteria such as RSS or SNR. These thresholds determine when a handover should be initiated.
 - **GCHO:** Group Cell Handover methods might dynamically adjust handover thresholds based on group characteristics and network conditions. Instead of using fixed thresholds, GCHO adapts thresholds to optimize group handover decisions.
 - **OPI-RLI-HO:** OPI-RLI-HO dynamically optimizes handover thresholds based on real-time network conditions and the optimization parameter. By adjusting thresholds dynamically, OPI-RLI-HO aims to improve handover efficiency and adaptability to changing network conditions.
+
+![image](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/85728b63-c70f-4456-9daa-9847f257da24)
 
 ## Conclusion
 
