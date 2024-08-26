@@ -291,6 +291,59 @@ This README provides an overview of the key parameters considered in each handov
 
 ![image](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/85728b63-c70f-4456-9daa-9847f257da24)
 
+## Tabulating the parameters and Functionality for each model:
+
+### Traditional Handover
+
+| **Parameter**            | **Approximate Value Range**       | **Functionality**                                                    |
+|--------------------------|-----------------------------------|----------------------------------------------------------------------|
+| **Received Signal Strength (RSS)** | -120 dBm to 0 dBm                  | Used to trigger handover when signal strength is below threshold.     |
+| **Signal-to-Noise Ratio (SNR)**    | 0 dB to 30 dB                      | Assesses communication quality; higher SNR indicates better quality.  |
+| **Cell Load**                     | 0% to 100%                        | Represents the cell's utilization; overloaded cells may trigger handover. |
+| **Coverage Area**                 | 1 km to 10 km                     | Represents the cell's coverage area, indirectly influencing handover. |
+| **Mobility Speed**                | 0 km/h to 120 km/h                | Higher speeds may require more frequent handovers.                    |
+| **Handover Threshold**            | -90 dBm to -110 dBm               | Fixed threshold for triggering handover based on RSS.                 |
+
+### Group Cell Handover (GCHO)
+
+| **Parameter**            | **Approximate Value Range**       | **Functionality**                                                    |
+|--------------------------|-----------------------------------|----------------------------------------------------------------------|
+| **Received Signal Strength (RSS)** | -120 dBm to 0 dBm                  | Considered collectively across a group of cells to decide handover.   |
+| **Group Size**                    | 2 to 5                             | Number of cells involved in the group for collective handover decisions. |
+| **Interference Level**            | 0 to 20                            | Represents the level of interference in the network environment.      |
+| **Group Load**                    | 0 to 500                           | Aggregate load across the group of cells, influencing handover.       |
+| **Group Coverage Area**           | 2 km to 20 km                      | Combined coverage area of the grouped cells.                          |
+
+### OPI-RLI-HO
+
+| **Parameter**                   | **Approximate Value Range**       | **Functionality**                                                    |
+|---------------------------------|-----------------------------------|----------------------------------------------------------------------|
+| **Received Signal Strength (RSS)** | -120 dBm to 0 dBm                  | Dynamically adjusted based on real-time conditions.                   |
+| **Signal-to-Noise Ratio (SNR)** | 0 dB to 30 dB                      | May be adjusted depending on its relevance to optimization.          |
+| **Cell Load**                   | 0% to 100%                        | Dynamically optimized to improve resource utilization.               |
+| **Coverage Area**               | 1 km to 10 km                     | Dynamically considered for efficient coverage management.            |
+| **Mobility Speed**              | 0 km/h to 120 km/h                | Handovers adjusted dynamically based on user speed.                  |
+| **Handover Threshold**          | -90 dBm to -110 dBm               | Dynamically optimized based on real-time network conditions.         |
+| **Optimization Parameter**      | 0 to 1                            | Represents any variable that needs optimization (e.g., throughput).  |
+| **Received Level Indicator**    | 0 to 100                          | Indicator for making handover decisions; >50 triggers handover.      |
+| **Handover Decision**           | 0 or 1                            | Binary decision based on received level indicator and other factors. |
+
+
+## Overall Tabulation
+
+| **Model**               | **Received Signal Strength (RSS)** | **Signal-to-Noise Ratio (SNR)** | **Cell Load** | **Coverage Area** | **Mobility Speed** | **Handover Threshold** | **Group Size** | **Interference Level** | **Group Load** | **Optimization Parameter** | **Received Level Indicator** | **Handover Decision** |
+|-------------------------|------------------------------------|----------------------------------|--------------|-------------------|--------------------|------------------------|----------------|-------------------------|---------------|----------------------------|----------------------------|-----------------------|
+| **Traditional Handover** | ✔                                  | ✔                                | ✔            | ✔                 | ✔                  | ✔                      |                |                         |               |                            |                            |                       |
+| **Group Cell Handover**  | ✔ (considered collectively)        |                                  |              | ✔ (group level)   |                    |                        | ✔              | ✔                       | ✔             |                            |                            |                       |
+| **OPI-RLI-HO**           | ✔ (dynamically adjusted)           | ✔ (if relevant to optimization)  | ✔ (dynamic)  | ✔ (dynamic)       | ✔ (dynamic)        | ✔ (dynamic)            |                |                         |               | ✔                          | ✔                          | ✔                     |
+
+### Explanation:
+- **✔**: Indicates that the parameter is used in the model.
+- **(considered collectively)**: RSS is considered collectively in the Group Cell Handover model across a group of cells.
+- **(dynamically adjusted)**: Parameters like RSS, SNR, Cell Load, Coverage Area, Mobility Speed, and Handover Threshold in the OPI-RLI-HO model are dynamically adjusted based on real-time conditions and optimization needs.
+- **(group level)**: In Group Cell Handover, Coverage Area is considered at the group level rather than for individual cells.
+- **(if relevant to optimization)**: SNR in OPI-RLI-HO may be adjusted depending on its relevance to the current optimization strategy.
+
 
 ## Conclusion
 
