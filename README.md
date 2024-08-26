@@ -291,18 +291,22 @@ This README provides an overview of the key parameters considered in each handov
 
 ![image](https://github.com/saadhussain01306/handoff-stations-ns2/assets/118361679/85728b63-c70f-4456-9daa-9847f257da24)
 
+
 Here's the tabulated format with the functionality of each parameter marked for the different handover models:
 
-Model	Received Signal Strength (RSS)	Signal-to-Noise Ratio (SNR)	Cell Load	Coverage Area	Mobility Speed	Handover Threshold	Group Size	Interference Level	Group Load	Optimization Parameter	Received Level Indicator	Handover Decision
-Traditional Handover	✔	✔	✔	✔	✔	✔						
-Group Cell Handover	✔ (considered collectively)			✔ (group level)			✔	✔	✔			
-OPI-RLI-HO	✔ (dynamically adjusted)	✔ (if relevant to optimization)	✔ (dynamic)	✔ (dynamic)	✔ (dynamic)	✔ (dynamic)				✔	✔	✔
-Explanation:
-✔: Indicates that the parameter is used in the model.
-(considered collectively): RSS is considered collectively in the Group Cell Handover model across a group of cells.
-(dynamically adjusted): Parameters like RSS, SNR, Cell Load, Coverage Area, Mobility Speed, and Handover Threshold in the OPI-RLI-HO model are dynamically adjusted based on real-time conditions and optimization needs.
-(group level): In Group Cell Handover, Coverage Area is considered at the group level rather than for individual cells.
-(if relevant to optimization): SNR in OPI-RLI-HO may be adjusted depending on its relevance to the current optimization strategy.
+| **Model**               | **Received Signal Strength (RSS)** | **Signal-to-Noise Ratio (SNR)** | **Cell Load** | **Coverage Area** | **Mobility Speed** | **Handover Threshold** | **Group Size** | **Interference Level** | **Group Load** | **Optimization Parameter** | **Received Level Indicator** | **Handover Decision** |
+|-------------------------|------------------------------------|----------------------------------|--------------|-------------------|--------------------|------------------------|----------------|-------------------------|---------------|----------------------------|----------------------------|-----------------------|
+| **Traditional Handover** | ✔                                  | ✔                                | ✔            | ✔                 | ✔                  | ✔                      |                |                         |               |                            |                            |                       |
+| **Group Cell Handover**  | ✔ (considered collectively)        |                                  |              | ✔ (group level)   |                    |                        | ✔              | ✔                       | ✔             |                            |                            |                       |
+| **OPI-RLI-HO**           | ✔ (dynamically adjusted)           | ✔ (if relevant to optimization)  | ✔ (dynamic)  | ✔ (dynamic)       | ✔ (dynamic)        | ✔ (dynamic)            |                |                         |               | ✔                          | ✔                          | ✔                     |
+
+### Explanation:
+- **✔**: Indicates that the parameter is used in the model.
+- **(considered collectively)**: RSS is considered collectively in the Group Cell Handover model across a group of cells.
+- **(dynamically adjusted)**: Parameters like RSS, SNR, Cell Load, Coverage Area, Mobility Speed, and Handover Threshold in the OPI-RLI-HO model are dynamically adjusted based on real-time conditions and optimization needs.
+- **(group level)**: In Group Cell Handover, Coverage Area is considered at the group level rather than for individual cells.
+- **(if relevant to optimization)**: SNR in OPI-RLI-HO may be adjusted depending on its relevance to the current optimization strategy.
+
 This table reflects how each parameter functions within the respective handover management models.
 
 ## Conclusion
